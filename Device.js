@@ -15,16 +15,26 @@ function Device(t,ma,c){
         if(this.state == "off" && this.juice >0){
            this.state = "idle";
         }
+
         else if (this.state == "off" && this.juice<=0){
-            this.state = "off";
+            this.state = "off";}
         }
         else if (this.state == "idle" && this.juice>0){
             this.state = "active";
         }
-        else if (this.state == "on" && this.juice>0){
-                      this.state = "active";
-        }
     };
+
+  this.sleep = function(){
+    if(this.state == "active"){
+      this.state = "idle";
+    }
+    if(this.state == ""
+
+  }
+
+  this.wake = function(){
+
+  }
 
     this.charge = function(min){
         //adds more electricity to the device's juice depending on its state
