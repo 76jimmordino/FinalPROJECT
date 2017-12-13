@@ -8,19 +8,28 @@ function ChargingDock(){
 //Instance Fucntions
     this.plug = function(dvc){
       for(let a=0; a<=this.leds.length; a++){
-        if(this.led[a]=="red"){
+        if(this.leds[a]=="red"){
           this.ports[a]=dvc;
-          if(this.juice<0.99)
-
-        }
-      )
       }
-
+          if(dvc.juice<0.99){
+              this.leds= "yellow";
+          }
+          else if(dvc.juice >= 0.99){
+              this.leds = "green";
+          }
+        }
+      }
+      return this.ports[a];
         //type in here
     };
 
     this.unplug = function(dvcIdx){
-        //type in here
+        if(!(this.leds == "red" )){
+            let temp = this.ports[dvcIdx];
+            this.ports[dvcIdx] = undefined;
+            this.leds[dvcIdx]= "red";
+            return temp;
+        }
     };
 
     this.chargeAll = function(min){
